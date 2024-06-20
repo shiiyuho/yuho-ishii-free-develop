@@ -1,6 +1,17 @@
-import type { Config } from "tailwindcss";
+interface TailwindConfig {
+  content: string[];
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": string;
+        "gradient-conic": string;
+      };
+    };
+  };
+  plugins: any[];
+}
 
-const config: Config = {
+const config: TailwindConfig = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,4 +29,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;
