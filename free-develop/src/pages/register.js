@@ -1,28 +1,30 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import styles from "../styles/Login.module.css";
+import styles from "../styles/Register.module.css";
 
-const Login = () => {
+const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const router = useRouter();
 
-  const handleSubmit = (event) => {
+  const handleRegister = (event) => {
     event.preventDefault();
-    // データベース接続がないため、ログイン成功とみなす
-    setMessage("Login successful!");
+    // 登録成功メッセージを表示してクイズ画面に遷移
+    setMessage("Registration successful!");
     router.push("/quiz");
   };
 
-  const handleRegister = () => {
-    router.push("/register");
+  const handleBack = () => {
+    router.push("/");
   };
 
   return (
     <div className={styles.container}>
-      <h1 className={`${styles.heading} text-2xl font-bold mb-4`}>Login</h1>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <h1 className={`${styles.heading} text-2xl font-bold mb-4`}>
+        新規登録画面
+      </h1>
+      <form onSubmit={handleRegister} className={styles.form}>
         <div className={styles.inputGroup}>
           <label
             htmlFor="username"
@@ -59,7 +61,7 @@ const Login = () => {
           type="submit"
           className={`${styles.button} w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
         >
-          ログイン
+          登録
         </button>
       </form>
       {message && (
@@ -68,13 +70,13 @@ const Login = () => {
         </p>
       )}
       <button
-        onClick={handleRegister}
+        onClick={handleBack}
         className={`${styles.button} w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 mt-4`}
       >
-        新規登録
+        ログイン画面に戻る
       </button>
     </div>
   );
 };
 
-export default Login;
+export default Register;
