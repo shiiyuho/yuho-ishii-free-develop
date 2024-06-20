@@ -5,7 +5,7 @@ const Result = ({ score, totalQuestions }) => {
   const router = useRouter();
 
   const handleGoToRanking = () => {
-    router.push("/ranking"); // ランキング画面へ遷移（後ほど作成）
+    router.push("/ranking");
   };
 
   const handleGoToTitle = () => {
@@ -18,12 +18,12 @@ const Result = ({ score, totalQuestions }) => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>お疲れ様でした</h1>
+      <h1 className={styles.title}>クイズ終了ーーー！</h1>
       <p className={styles.resultText}>
         あなたのスコアは: {score} / {totalQuestions}
       </p>
       <button onClick={handleGoToRanking} className={styles.button}>
-        ランキング表示
+        ランキングへ
       </button>
       <button onClick={handleGoToTitle} className={styles.button}>
         タイトルへ
