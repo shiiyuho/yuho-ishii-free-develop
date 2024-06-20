@@ -12,6 +12,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "types": ["node"], // "tailwindcss" を削除
     "plugins": [
       {
         "name": "next"

@@ -1,12 +1,14 @@
 import { useState } from "react";
 import quizData from "../data/quizData";
 import styles from "../styles/Quiz.module.css";
+import { useRouter } from "next/router";
 
 const Quiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [quizStarted, setQuizStarted] = useState(false);
+  const router = useRouter();
 
   const handleStartQuiz = () => {
     setQuizStarted(true);
@@ -20,7 +22,10 @@ const Quiz = () => {
     if (nextQuestion < quizData.length) {
       setCurrentQuestionIndex(nextQuestion);
     } else {
-      setShowResult(true);
+      router.push({
+        pathname: "/result",
+        query: { score, totalQuestions: quizData.length },
+      });
     }
   };
 
